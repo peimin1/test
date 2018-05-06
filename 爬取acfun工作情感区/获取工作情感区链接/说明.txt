@@ -1,0 +1,14 @@
+通过观察，我们发现链接是位于'class': 'act-cont-top clearfixx下的a标签中，并且a站的页面是由ajax语言写的
+
+于是我们使用selenium来爬取
+
+遇见的问题:在使用browser.find_elements_by_css_seletor('.act-cont-top clearfixx')时，返回的数据是一个空值，不知道为什么，希望有人能够解答一样
+
+于是想到了将page_source的内容用Beautifulsoup解析
+得到的答案是解析出来的类型是bs4类型，囧，不知道怎么转类型
+
+想着先把问题解决，决定采用正则表达式
+
+通过selenium的函数将滚轮拖动以采取更多的内容
+
+这里我做试验，共下拉了6次滚轮
