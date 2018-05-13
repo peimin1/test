@@ -2,7 +2,8 @@
 
 于是我们使用selenium来爬取
 
-遇见的问题:在使用browser.find_elements_by_css_seletor('.act-cont-top clearfixx')时，返回的数据是一个空值，不知道为什么，希望有人能够解答一样
+遇见的问题:在使用browser.find_elements_by_css_seletor('.act-cont-top clearfixx')时，返回的数据是一个空值，不知道为什么，希望有人能够解答一样（
+现在解决了，是因为class有2个属性,所以需要select选择器中间加入.）
 
 于是想到了将page_source的内容用Beautifulsoup解析
 得到的答案是解析出来的类型是bs4类型，囧，不知道怎么转类型
@@ -12,3 +13,8 @@
 通过selenium的函数将滚轮拖动以采取更多的内容
 
 这里我做试验，共下拉了6次滚轮
+
+优化：我们发现，数据是在Preview里的data里的articleList里的每个列表的id；
+这是json。我们可以采用python自带的json模块进行解析
+
+我添加了json解析，结果出来了，但我是用字典完成搜索的，不过也完成了任务，对json这一块还不是很熟悉，需要加强
