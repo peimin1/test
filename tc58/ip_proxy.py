@@ -3,20 +3,20 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import random
-
+from tc58.user_agent_proxy import full_headers
 
 # 测试是否可用
 # ip为传入的ip :  0.0.0.0:8000
 # test_url 为测试的目标网站, 可以看作你将要爬取得网站
 # tiem_out 请求的延迟
-def test_ip(ip, test_url='http://www.58.com/ershoufang/changecity/', time_out=0.3):
+def test_ip(ip, test_url='http://wh.58.com/ershoufang/35004226671936x.shtml?fzbref=0&from=1-list-1&psid=150582061200995105861835482&iuType=gz_2&ClickID=1&apptype=0&key=&entinfo=35004226671936_0&params=rankesfjxpclranxuanalphapriceAB5099^desc&cookie=||https%3A%2F%2Fwww.google.com.hk%2F|c5/nn1rHJj4KaL4lJGRfAg&PGTID=0d30000c-0009-e83a-eea3-e06b1d79a347&local=158&pubid=39373778&trackkey=35004226671936_367a0daf-8328-4360-a97a-0b6abc448463_20180805200925_1533470965440&fcinfotype=gz', time_out=0.3):
     proxies = {'https': ip} # 代理
     global all # 使用全局变量
     j = 0
     while j < 3: # 一共测试3次
         try:
             # 请求目标网址
-            r = requests.get(test_url, proxies=proxies, timeout=time_out)
+            r = requests.get(test_url, proxies=proxies, timeout=time_out, headers=full_headers)
             # 如果返回的状态码为200, 则表示成功
             if r.status_code == 200:
                 print('***************测试通过%s**************' % ip)
@@ -47,7 +47,7 @@ all = []
 # 一个装爬下来IP的容器
 ip_list = []
 # 爬取20页的数据
-for page in range(10):
+for page in range(5, 7):
     url += str(page)
     headers = {
         # 每一次爬取选择随机的请求头
